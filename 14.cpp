@@ -5,21 +5,22 @@
 using namespace std;
 
 int main (){
+    int const tam = 4;
     int A[20], B[20];
     int i, j=0, cont = 0;
 
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << "Informe o elemento " << i << ": ";
         cin >> A[i];
     }
 
-    for (i=3; i>=0; i--){
+    for (i=tam-1; i>=0; i--){
         B[j] = A[i];
         j++;
     }
 
     cout << "Vetor A: ";
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << A[i] << " ";
         if (B[i] == A[i]) {
             cont++;
@@ -28,11 +29,11 @@ int main (){
 
     cout << "\n";
     cout << "Vetor B: ";
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << B[i] << " ";
     }
 
-    if (cont==4){
+    if (cont==tam){
         cout << "Eh palindromo.";
     } else {
         cout << "Nao eh palindromo.";

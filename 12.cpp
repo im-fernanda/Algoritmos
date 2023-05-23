@@ -6,11 +6,12 @@
 using namespace std;
 
 int main (){
+    int const tam = 4;
     int A[10];
     int i, num, localizacao;
     bool localizado = false;
 
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << "Informe o elemento " << i << ": ";
         cin >> A[i];
         
@@ -23,7 +24,7 @@ int main (){
     }
 
     cout << "Vetor: ";
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << A[i] << " ";
     }
 
@@ -31,7 +32,7 @@ int main (){
     cout << "Informe um numero inteiro: ";
     cin >> num;
 
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         if (num == A[i]){
             localizado = true;
             localizacao = i;

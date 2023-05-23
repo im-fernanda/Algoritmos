@@ -5,9 +5,10 @@
 using namespace std;
 
 int main (){
+    int const tam = 5;
     int A[10], P[10], i, j=0;
  
-    for (i=0; i<5; i++){
+    for (i=0; i<tam; i++){
         cout << "Digite o elemento " << i << " do vetor: ";
         cin >> A[i];
         if (i!=0 && i%2 == 0){

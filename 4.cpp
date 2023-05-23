@@ -5,15 +5,16 @@
 using namespace std;
 
 int main (){
+    int const tam = 4;
     int A[20], i, diferenca = 0, maiorDiferenca = 0, indice1, indice2;
 
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << "Digite o elemento " << i << " do vetor: ";
         cin >> A[i];
     }
 
     cout << "Vetor A: ";
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << A[i] << " ";
         diferenca = A[i+1] - A[i];
         if (diferenca < 0){

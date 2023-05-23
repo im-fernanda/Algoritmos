@@ -4,9 +4,10 @@
 using namespace std;
 
 int main (){
+    int const tam = 4;
     int A[20], pares = 0, i;
 
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << "Digite o elemento " << i << " do vetor: ";
         cin >> A[i];
         if (A[i] % 2 == 0){
@@ -16,7 +17,7 @@ int main (){
     }
 
     cout << "Vetor final: ";
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << A [i] << " ";
     }
 

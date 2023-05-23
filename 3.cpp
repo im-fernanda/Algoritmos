@@ -5,10 +5,11 @@
 using namespace std;
 
 int main (){
+    int const tam = 4;
     int A[15], i;
     char resposta;
 
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << "Digite o elemento " << i << " do vetor: ";
         cin >> A[i];
     }
@@ -17,14 +18,14 @@ int main (){
 
     if (resposta == 'p'){
         cout << "Elementos em indices pares: ";
-        for (i=0; i<4; i++){
+        for (i=0; i<tam; i++){
             if (i % 2 == 0){
                 cout << A[i] << " ";
         }
         }
     } else if (resposta == 'i'){
         cout << "Elementos em indices impares: ";
-        for (i=0; i<4; i++){
+        for (i=0; i<tam; i++){
             if (i % 2 != 0){
                 cout << A[i] << " ";
         }

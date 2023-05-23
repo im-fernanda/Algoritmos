@@ -4,22 +4,23 @@
 using namespace std;
 
 int main() {
+    int const tam = 4;
     int A[10], B[10], C[20];
     int i, indexC = 0;
     
     cout << "Informe os elementos do vetor A:" << endl;
-    for (i=0; i<4; i++) {
+    for (i=0; i<tam; i++) {
         cout << "Elemento " << i+1 << ": ";
         cin >> A[i];
     }
     
     cout << "Informe os elementos do vetor B:" << endl;
-    for (i=0; i<4; i++) {
+    for (i=0; i<tam; i++) {
         cout << "Elemento " << i+1 << ": ";
         cin >> B[i];
     }
     
-    for (i=0; i<4; i++) {
+    for (i=0; i<tam; i++) {
         C[indexC] = A[i]; // Adiciona elemento de A em C
         indexC++;
         C[indexC] = B[i]; // Adiciona elemento de B em C
@@ -28,7 +29,7 @@ int main() {
     
     // Exibição do vetor C
     cout << "Vetor C (intercalado):" << endl;
-    for (i=0; i<8; i++) {
+    for (i=0; i<tam; i++) {
         cout << C[i] << " ";
     }
     cout << endl;

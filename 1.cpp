@@ -5,11 +5,12 @@
 using namespace std;
 
 int main (){
+    int const tam = 4;
     int A[20];
     int i, codigo;
 
     cout << "Informe os elementos do vetor A: ";
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cin >> A[i];
     }
 
@@ -17,7 +18,7 @@ int main (){
     cin >> codigo;
 
     if (codigo == 1){
-        for (i=0; i<4; i++){
+        for (i=0; i<tam; i++){
             cout << A[i] << " ";
         } 
     } else if (codigo == 2) {

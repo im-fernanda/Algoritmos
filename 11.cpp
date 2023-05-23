@@ -5,10 +5,11 @@
 using namespace std;
 
 int main (){
+    int const tam = 4;
     int A[20];
     int i, somaP = 0, somaI = 0;
 
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         A[i] = i*2;
                 
         if (A[i]%2 == 0) {
@@ -19,13 +20,12 @@ int main (){
     }
 
     cout << "Vetor: ";
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << A[i] << " ";
     }
     cout << "\n";
     cout << "Soma dos elementos pares: " << somaP << endl;
     cout << "Soma dos elementos impares: " << somaI << endl;
-
 
     return 0;
 }

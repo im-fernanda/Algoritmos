@@ -4,20 +4,21 @@
 using namespace std;
 
 int main (){
+    int const tam = 4;
     int original[20], i;
     bool crescente = true, decrescente = true;
 
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << "Informe o elemento " << i+1 << ": ";
         cin >> original[i];
     }
 
-    for (i=1; i<4; i++) {
+    for (i=1; i<tam; i++) {
         if (original[i] < original[i-1]) {
             crescente = false;
         }
     }
-    for (i=1; i<4; i++) {
+    for (i=1; i<tam; i++) {
         if (original[i] > original[i-1]) {
             decrescente = false;
         }

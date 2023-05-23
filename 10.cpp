@@ -7,10 +7,11 @@
 using namespace std;
 
 int main (){
+    int const tam = 5;
     int A[10], B[10], C[10];
     int i, somaA = 0, somaB = 0, maiores = 0;
 
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << "Digite o elemento " << i << " do vetor 1: ";
         cin >> A[i];
         
@@ -28,7 +29,7 @@ int main (){
     cout << "Soma dos elementos de B: " << somaB << endl;
 
     cout << "Vetor C: ";
-    for (i=0; i<4; i++){
+    for (i=0; i<tam; i++){
         cout << C[i] << " ";
         if (A[i] > somaB) {
             maiores++;
