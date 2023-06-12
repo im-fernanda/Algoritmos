@@ -146,6 +146,7 @@ int main(){
                 for (i=0; i<fim; i++){
                     if (gols == jogador[i].estatisticas.gols){
                         cout << "\n\tNome: " << jogador[i].nome;
+                        cout << "\tIdade: " << jogador[i].idade;
                         cout << "\tNacionalidade: " << jogador[i].nacionalidade;
                         cout << "\n\tCamisa: " << jogador[i].camisa;
                         cout << "\tPartidas jogadas: "<< jogador[i].estatisticas.partidas;
@@ -163,6 +164,7 @@ int main(){
                 for (i=0; i<fim; i++){
                     if (partidas == jogador[i].estatisticas.partidas){
                         cout << "\n\tNome: " << jogador[i].nome;
+                        cout << "\tIdade: " << jogador[i].idade;
                         cout << "\tNacionalidade: " << jogador[i].nacionalidade;
                         cout << "\n\tCamisa: " << jogador[i].camisa;
                         cout << "\n\n";
@@ -256,7 +258,50 @@ int main(){
             break;
 
             case 4: cout << "\nINICIANDO EXCLUSAO...";
+            if(fim==0){
+                cout << "\n\tAinda nao ha nenhum registro.";
+            } else {
+                //Solicitar a chave primária
+                cout << "\n\tQual o numero da camisa que deseja excluir? ";
+                cin >> camisaAux;
+                getchar();
 
+                achou=false;
+                for (i=0;i<fim;i++){
+                    if (camisaAux==jogador[i].camisa){
+                        achou=true;
+                        iAux = i;
+                    }
+                }
+                if (!achou){
+                    cout << "\nEsse numero de camisa nao esta cadastrado.";
+                } else {
+                    cout << "\n\tNome: " << jogador[iAux].nome;
+                    cout << "\tIdade: " << jogador[iAux].idade;
+                    cout << "\tNacionalidade: " << jogador[iAux].nacionalidade;
+                    cout << "\tSaldo de gols: "<< jogador[iAux].estatisticas.gols;
+                    cout << "\tPartidas jogadas: "<< jogador[iAux].estatisticas.partidas;
+                    cout << "\n\n";
+
+                    cout << "\nConfirma a exclusao? (1-sim, 2-nao): ";
+                    cin >> opcao;
+                    getchar();
+                    if (opcao==1){
+                        for (i=iAux; i<fim; i++){
+                            jogador[i].camisa = jogador[i+1].camisa;
+                            jogador[i].nome = jogador[i+1].nome;
+                            jogador[i].idade= jogador[i+1].idade;
+                            jogador[i].nacionalidade = jogador[i+1].nacionalidade;
+                            jogador[i].estatisticas.gols = jogador[i+1].estatisticas.gols;
+                            jogador[i].estatisticas.partidas = jogador[i+1].estatisticas.partidas;
+                        }
+                        fim--;
+                        cout << "\nExclusao realizada com sucesso." << endl;
+                    } else {
+                        cout << "\nExclusao cancelada." << endl;
+                    }
+                }
+            }
             break;
 
             case 5: cout << "\n\t-------- REGISTROS EXISTENTES --------" ;
