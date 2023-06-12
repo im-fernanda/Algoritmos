@@ -30,12 +30,11 @@ struct tJogador{
 
 int main(){
     tJogador jogador[23];
-    int i, j=0, fim=0, camisaAux;
+    int i, fim=0, camisaAux;
     int opcao, opcao2, iAux;
     int idade, gols, partidas;
     string nacionalidade, nomeAux;
-    bool achou;
-
+    bool achou, existe;
 
     do {
         cout << "\n\t       MENU PRINCIPAL";
@@ -96,6 +95,9 @@ int main(){
             break;
 
             case 2: cout << "\nINICIANDO BUSCA...";
+             if (fim==0){
+                    cout << "\n\tAinda nao ha nenhum registro.";
+            } else {
             cout << "\nDeseja buscar por 1-IDADE, 2-NACIONALIDADE, 3-GOLS ou 4-PARTIDAS?  ";
             cin >> opcao2;
             getchar();
@@ -105,9 +107,13 @@ int main(){
                 cout << "Digite a idade que deseja buscar: ";
                 cin >> idade;
                 getchar();
+
+                existe=false;
                 cout << "\n\t-------- Jogadores com " << idade << " anos --------";
                 for (i=0; i<fim; i++){
                     if (idade == jogador[i].idade){
+                        existe = true;
+
                         cout << "\n\tNome: " << jogador[i].nome;
                         cout << "\tNacionalidade: " << jogador[i].nacionalidade;
                         cout << "\n\tCamisa: " << jogador[i].camisa;
@@ -116,6 +122,9 @@ int main(){
                         cout << "\n\n";
                     }
                 }
+                if (!existe){
+                    cout << "\nNao existem jogadores cadastrados com essa idade." << endl;
+                };
                 system("pause");
                 break;
 
@@ -123,9 +132,12 @@ int main(){
                 cout << "Digite a nacionalidade que deseja buscar: ";
                 getline(cin, nacionalidade);
 
+                existe=false;
                 cout << "\n\t-------- Jogadores do(a) " << nacionalidade << " --------";
                 for (i=0; i<fim; i++){
                     if (nacionalidade == jogador[i].nacionalidade){
+                        existe=true;
+
                         cout << "\n\tNome: " << jogador[i].nome;
                         cout << "\tIdade: " << jogador[i].idade;
                         cout << "\n\tCamisa: " << jogador[i].camisa;
@@ -133,7 +145,10 @@ int main(){
                         cout << "\tPartidas jogadas: "<< jogador[i].estatisticas.partidas;
                         cout << "\n\n";
                     }
-                } 
+                }
+                if (!existe){
+                    cout << "\nNao existem jogadores cadastrados com essa nacionalidade." << endl;
+                };
                 system("pause");              
                 break;
 
@@ -142,9 +157,11 @@ int main(){
                 cin >> gols;
                 getchar();
 
+                existe=false;
                 cout << "\n\t-------- Jogadores com " << gols << " gols --------";
                 for (i=0; i<fim; i++){
                     if (gols == jogador[i].estatisticas.gols){
+                        existe=true;
                         cout << "\n\tNome: " << jogador[i].nome;
                         cout << "\tIdade: " << jogador[i].idade;
                         cout << "\tNacionalidade: " << jogador[i].nacionalidade;
@@ -153,6 +170,11 @@ int main(){
                         cout << "\n\n";
                     }
                 }
+                if (!existe){
+                    cout << "\nNao existem jogadores cadastrados com esse saldo de gols." << endl;
+                };
+
+                system("pause");
                 break;
 
                 case 4:
@@ -160,6 +182,7 @@ int main(){
                 cin >> partidas;
                 getchar();
 
+                existe=false;
                 cout << "\n\t-------- Jogadores com " << partidas << " partidas --------";
                 for (i=0; i<fim; i++){
                     if (partidas == jogador[i].estatisticas.partidas){
@@ -170,90 +193,100 @@ int main(){
                         cout << "\n\n";
                     }
                 }
+                if (!existe){
+                    cout << "\nNao existem jogadores cadastrados com essa quantidade de partidas." << endl;
+                };
 
                 system("pause");
                 break;
 
                 default: cout << "Opcao invalida.";
                 break;
+                }
             }
             break;
 
             case 3: cout << "\nINICIANDO ALTERACAO...";
-            //Solicitar a camisa (chave primária)
-            cout << "\n\tQual o numero da camisa que deseja alterar? ";
-            cin >> camisaAux;
-            getchar();
-
-            achou=false;
-            for (i=0;i<fim;i++){
-                if (camisaAux==jogador[i].camisa){
-                    achou=true;
-                    iAux = i;
-                }
-            }
-            if (!achou){
-                cout << "Esse numero de camisa ainda nao esta cadastrado.";
+            if (fim==0) {
+                cout << "\n\tAinda nao ha nenhum registro cadastrado." << endl;
             } else {
-                cout << "\n\tNome: " << jogador[iAux].nome;
-                cout << "\tIdade: " << jogador[iAux].idade;
-                cout << "\tNacionalidade: " << jogador[iAux].nacionalidade;
-                cout << "\tSaldo de gols: "<< jogador[iAux].estatisticas.gols;
-                cout << "\tPartidas jogadas: "<< jogador[iAux].estatisticas.partidas;
-                cout << "\n\n";
-                
-                cout << "\n\tDeseja alterar o numero da camisa (1-sim, 2-nao)? ";
-                    cin >> opcao;
-                    getchar();
-                    if(opcao==1){
-                        cout << "\n\tDigite o novo numero: ";
-                        cin >> camisaAux;
-                        getchar();
+                //Solicitar a camisa (chave primária)
+                cout << "\n\tQual o numero da camisa que deseja alterar? ";
+                cin >> camisaAux;
+                getchar();
 
-                        achou = false;
-                        if (camisaAux!=jogador[iAux].camisa){ //verifica se esta colocando um numero diferente do atual
-                            for(i=0; i<fim; i++){
-                                if(camisaAux == jogador[i].camisa){ //verifica se ja existe jogador com aquela camisa
-                                    achou = true;
+                achou=false;
+                for (i=0;i<fim;i++){
+                    if (camisaAux==jogador[i].camisa){
+                        achou=true;
+                        iAux = i;
+                    }
+                }
+                if (!achou){
+                    cout << "\nEsse numero de camisa ainda nao esta cadastrado.";
+                } else {
+                    cout << "\n\tNome: " << jogador[iAux].nome;
+                    cout << "\tIdade: " << jogador[iAux].idade;
+                    cout << "\tNacionalidade: " << jogador[iAux].nacionalidade;
+                    cout << "\tSaldo de gols: "<< jogador[iAux].estatisticas.gols;
+                    cout << "\tPartidas jogadas: "<< jogador[iAux].estatisticas.partidas;
+                    cout << "\n\n";
+                    
+                    cout << "\n\tDeseja alterar o numero da camisa (1-sim, 2-nao)? ";
+                        cin >> opcao;
+                        getchar();
+                        if(opcao==1){
+                            cout << "\n\tDigite o novo numero: ";
+                            cin >> camisaAux;
+                            getchar();
+
+                            achou = false;
+                            if (camisaAux!=jogador[iAux].camisa){ //verifica se esta colocando um numero diferente do atual
+                                for(i=0; i<fim; i++){
+                                    if(camisaAux == jogador[i].camisa){ //verifica se ja existe jogador com aquela camisa
+                                        achou = true;
+                                    }
+                                }
+
+                                if(achou) {
+                                    cout << "\n\tJa existe jogador com esse numero de camisa.";
+                                } else {
+                                    jogador[iAux].camisa = camisaAux; //muda o numero da camisa do jogador atual
                                 }
                             }
-
-                            if(achou) {
-                                cout << "\n\tJa existe jogador com esse numero de camisa.";
-                            } else {
-                                jogador[iAux].camisa = camisaAux; //muda o numero da camisa do jogador atual
-                            }
                         }
-                    }
-                cout << "\n\tDeseja alterar o nome do jogador (1-sim, 2-nao)? ";
-                cin >> opcao;
-                getchar();
-                if(opcao==1) {
-                    cout << "\n\tDigite o novo nome: ";
-                    getline(cin, nomeAux);
+                    cout << "\n\tDeseja alterar o nome do jogador (1-sim, 2-nao)? ";
+                    cin >> opcao;
+                    getchar();
+                    if(opcao==1) {
+                        cout << "\n\tDigite o novo nome: ";
+                        getline(cin, nomeAux);
 
-                    jogador[iAux].nome=nomeAux;
+                        jogador[iAux].nome=nomeAux;
+                    }
+
+                    cout << "\n\tDeseja alterar o saldo de gols (1-sim, 2-nao)? ";
+                    cin >> opcao;
+                    getchar();
+                    if(opcao==1) {
+                        cout << "\n\tDigite o novo saldo de gols: ";
+                        cin >> jogador[iAux].estatisticas.gols;
+                        getchar();
+                    } 
+
+                    cout << "\n\tDeseja alterar a quantidade de partidas jogadas (1-sim, 2-nao)? ";
+                    cin >> opcao;
+                    getchar();
+                    if(opcao==1) {
+                        cout << "\n\tDigite o novo numero de partidas: ";
+                        cin >> jogador[iAux].estatisticas.partidas;
+                        getchar();
+                    }        
+
+                cout << "\n\tAlteracao(oes) realizada(s) com sucesso!";
                 }
 
-                cout << "\n\tDeseja alterar o saldo de gols (1-sim, 2-nao)? ";
-                cin >> opcao;
-                getchar();
-                if(opcao==1) {
-                    cout << "\n\tDigite o novo saldo de gols: ";
-                    cin >> jogador[iAux].estatisticas.gols;
-                    getchar();
-                } 
-
-                cout << "\n\tDeseja alterar a quantidade de partidas jogadas (1-sim, 2-nao)? ";
-                cin >> opcao;
-                getchar();
-                if(opcao==1) {
-                    cout << "\n\tDigite o novo numero de partidas: ";
-                    cin >> jogador[iAux].estatisticas.partidas;
-                    getchar();
-                }        
-
-            cout << "\n\tAlteracao(oes) realizada(s) com sucesso!";
+                system("pause");
             }
             break;
 
@@ -302,19 +335,24 @@ int main(){
                     }
                 }
             }
+            system("pause");
             break;
 
             case 5: cout << "\n\t-------- REGISTROS EXISTENTES --------" ;
-            for (i=0; i<fim; i++){
-                cout << "\n\tNome: " << jogador[i].nome;
-                cout << "\n\tCamisa: " << jogador[i].camisa;
-                cout << "\tIdade: " << jogador[i].idade;
-                cout << "\tNacionalidade: " << jogador[i].nacionalidade;
-                cout << "\tSaldo de gols: "<< jogador[i].estatisticas.gols;
-                cout << "\tPartidas jogadas: "<< jogador[i].estatisticas.partidas;
-                cout << "\n\n";
-                }
-            system("pause");
+            if (fim==0){
+                cout << "\nAinda nao ha nenhum registro." << endl;
+            } else {
+                for (i=0; i<fim; i++){
+                    cout << "\n\tNome: " << jogador[i].nome;
+                    cout << "\n\tCamisa: " << jogador[i].camisa;
+                    cout << "\tIdade: " << jogador[i].idade;
+                    cout << "\tNacionalidade: " << jogador[i].nacionalidade;
+                    cout << "\tSaldo de gols: "<< jogador[i].estatisticas.gols;
+                    cout << "\tPartidas jogadas: "<< jogador[i].estatisticas.partidas;
+                    cout << "\n\n";
+                    }
+                system("pause");
+            }
             break;
 
             case 6:
