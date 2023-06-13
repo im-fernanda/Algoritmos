@@ -1,6 +1,6 @@
 // Crie um tipo registro chamado Endereco que contenha os campos Rua (string), Numero (int), 
-// Bairro (string), Cidade (string), Estado (string). Em seguida declare uma variável do tipo 
-// Endereco. Crie outro tipo registro chamado Pessoa que tenha os campos Nome (string), 
+// Bairro (string), Cidade (string), Estado (string). Em seguida declare uma variável do tipo Endereco. 
+// Crie outro tipo registro chamado Pessoa que tenha os campos Nome (string), 
 // Ender (Endereco), Telefone (string) e Idade (int). 
 // - Declare um vetor pessoas com 10 posições do tipo Pessoa e leia seus dados; 
 // - Leia um endereço na variável do tipo endereço;
