@@ -16,32 +16,35 @@ using namespace std;
 
 int leNumero(int n1, int n2);
 void Tabuada (int n);
-
-int main (){
-    int n1 = 1;
-    int n2 = 10;
+int main(){
+    int const n1=1, n2=10;
     int n;
 
     n = leNumero(n1, n2);
     Tabuada(n);
-
     return 0;
 }
 
 int leNumero(int n1, int n2){
-    int n;
+    int num;
+    bool numValido;
 
     do {
-        cout << "Digite um valor inteiro maior que "<< n1 << " e menor igual a " << n2 << " : ";
-        cin >> n;
-    } while (n<1 || n>10);
+        numValido=true;
+        cout << "Informe um numero inteiro maior que 1 e menor ou igual a 10: ";
+        cin >> num;
 
-    return n;
+        if (num<=1 || num>10){
+            cout << "Numero invalido. Digite novamente." << endl; 
+            numValido=false;
+        }
+    } while (!numValido);
+
+    return num;
 }
 
 void Tabuada (int n){
     int i;
-
     for (i=1; i<11; i++){
         cout << "\t" << n << " X " << i << " = " << n*i << endl;
     }
