@@ -9,56 +9,42 @@
 #include <iostream>
 using namespace std;
 
-void maiorNota(float prova1, float prova2, float trabalho1, float trabalho2, float& maiorNotaProva, float& maiorNotaTrabalho);
 
-float mediaAritmetica (float& nota1, float& nota2);
+float maiorNota(float prova, float trabalho);
+float calculaMedia (float nota1, float nota2, float media);
 
 int main(){
-    float prova1, prova2, trabalho1, trabalho2;
-    float maiorNotaProva, maiorNotaTrabalho, media;
+    float provas[2], trabalhos[2];
+    float maiores[2], media=0;
+    int i;
+ 
+    for (i=0; i<2; i++){
+        cout << "Nota da prova " << i+1 << ": ";
+        cin >> provas[i];
+        cout << "Nota do trabalho " << i+1 << ": ";
+        cin >> trabalhos[i];
+    }
 
-    cout << "Digite a nota da prova 1: ";
-    cin >> prova1;
-    cout << "Digite a nota da prova 2: ";
-    cin >> prova2;
+    maiores[0] = maiorNota(provas[0], provas[1]);
+    maiores[1] = maiorNota(trabalhos[0], trabalhos[1]);
 
-    cout << "Digite a nota do trabalho 1: ";
-    cin >> trabalho1;
-     cout << "Digite a nota do trabalho 2: ";
-    cin >> trabalho2;   
-    cout << endl;
-    
-    maiorNota(prova1, prova2, trabalho1, trabalho2, maiorNotaProva, maiorNotaTrabalho);
+    media = calculaMedia(maiores[0], maiores[1], media);
 
-    cout << "Maior nota nas provas: " << maiorNotaProva << endl;
-    cout << "Maior nota nos trabalhos: " << maiorNotaTrabalho << endl;
-
-    media = mediaAritmetica(maiorNotaProva, maiorNotaTrabalho);
-    cout << "Media do aluno: " << media;
-
+    cout << "Maior nota nas provas: " << maiores[0] << endl;
+    cout << "Maior nota nos trabalhos: " << maiores[1] << endl;
+    cout << "Media aritmetica: " << media;
     return 0;
 }
 
-
-void maiorNota(float prova1, float prova2, float trabalho1, float trabalho2, float& maiorNotaProva, float& maiorNotaTrabalho){
-
-    if (prova1 > prova2){
-        maiorNotaProva = prova1;
+float maiorNota(float nota1, float nota2){
+    if (nota1>nota2){
+        return nota1;
     } else {
-        maiorNotaProva = prova2;            
-    }
-
-    if (trabalho1 > trabalho2){
-        maiorNotaTrabalho = trabalho1;
-    } else {
-        maiorNotaTrabalho = trabalho2;            
-    }
-
+        return nota2;
+    };
 }
 
-float mediaAritmetica (float& nota1, float& nota2){
-    float media;
-    media = (nota1 + nota2)/2;
-
+float calculaMedia (float nota1, float nota2, float media){
+    media = (nota1+nota2)/2;
     return media;
 }
