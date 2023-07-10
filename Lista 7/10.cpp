@@ -15,7 +15,7 @@ int inverteVetor(int *v1, int *v2, int n);
 void multiplicaEscalar(int *v1, int *v2, int x, int n);
 
 int main (){
-    int n = 4; // n=10
+    int const n = 4; // n=10
     int i, maior, x;
 
     int v1[n], v2[n];
