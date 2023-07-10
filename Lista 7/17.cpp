@@ -11,7 +11,7 @@ int main() {
     int numeros[tam];
     //const int tamanho = sizeof(nums) / sizeof(nums[0]);
     int i;
-    int* ponteiro = numeros + tam - 1;  // Inicializa o ponteiro apontando para o último elemento do vetor
+    int *ponteiro = numeros + tam - 1;  // Inicializa o ponteiro apontando para o último elemento do vetor
 
     cout << "Informe os " << tam << " elementos: ";
     for (i=0; i<tam; i++) {
