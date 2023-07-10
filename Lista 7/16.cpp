@@ -39,8 +39,7 @@ int main() {
         cout << x3[i] << " ";
     }
     cout << "}.";
-
-
+        
     return 0;
 }
 
@@ -70,7 +69,7 @@ int* uniao (int *x1, int *x2, int n1, int n2, int *qtd){
     return x3;
 }
 
-// Na linha int* x3 = uniao(x1, x2, n1, n2, &n3), o ponteiro x3 recebe o valor retornado pela função uniao, que é um endereço de memória apontando para o primeiro elemento do vetor resultante x3.
+// Na linha int *x3 = uniao(x1, x2, n1, n2, &n3), o ponteiro x3 recebe o valor retornado pela função uniao, que é um endereço de memória apontando para o primeiro elemento do vetor resultante x3.
 
 // A função uniao retorna um ponteiro para o vetor x3, que é alocado dinamicamente dentro da função. Quando atribuímos o valor retornado por uniao a x3, estamos efetivamente copiando o endereço de memória retornado pela função para o ponteiro x3.
 
