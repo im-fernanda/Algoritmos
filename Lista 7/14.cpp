@@ -29,7 +29,9 @@ int main (){
 }
 int letrasEncontradas(string frase, char letra, int *tam){
     int i, k=0;
-    int vetor[50];
+    int tamanho = frase.size();
+    int vetor[tamanho];
+    
     for (i=0; i<frase.size(); i++){
         if (frase[i] == letra){
             vetor[k] = i;
