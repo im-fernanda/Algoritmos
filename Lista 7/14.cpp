@@ -9,7 +9,7 @@
 #include <string>
 using namespace std;
 
-int letrasEncontradas(string frase, char letra, int *tam);
+int* letrasEncontradas(string frase, char letra, int *tam, int vetor[]);
 int main (){
     char letra;
     string frase;
@@ -21,17 +21,25 @@ int main (){
     cin >> letra;
     getchar();
 
-    letrasEncontradas(frase, letra, &tamanho);
-    cout << "\n\tO tamanho do vetor criado (total de letras iguais encontradas) eh " << tamanho << ".";
+    int vetor[frase.size()];
+    *letrasEncontradas(frase, letra, &tamanho, vetor);
+    cout << "\n\tO tamanho do vetor criado (total de letras iguais encontradas) eh " << tamanho << "." << endl;
 
+    cout << "\tA letra foi encontrada nas posicoes: ";
+    cout << "[";
+    for (i=0; i<tamanho; i++){
+        if (i==tamanho-1){
+            cout << vetor[i] << "].";
+        } else {
+            cout << vetor[i] << ",";
+        }
+    }
 
     return 0;
 }
-int letrasEncontradas(string frase, char letra, int *tam){
+
+int* letrasEncontradas(string frase, char letra, int *tam, int vetor[]){
     int i, k=0;
-    int tamanho = frase.size();
-    int vetor[tamanho];
-    
     for (i=0; i<frase.size(); i++){
         if (frase[i] == letra){
             vetor[k] = i;
@@ -40,16 +48,5 @@ int letrasEncontradas(string frase, char letra, int *tam){
     }
     *tam = k;
 
-    cout << "\tA letra foi encontrada nas posicoes: ";
-    cout << "[";
-    for (i=0; i<k; i++){
-        if (i==k-1){
-            cout << vetor[i] << "].";
-        } else {
-            cout << vetor[i] << ",";
-        }
-    }
-
-
-    return *tam;
+    return vetor;
 }
