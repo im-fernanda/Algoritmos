@@ -1,5 +1,5 @@
 /*
-    17. Escreva um programa que leia números 10 inteiros, armazene-os em um vetor e 
+    17. Escreva um programa que leia 10 números inteiros, armazene-os em um vetor e 
     os escreva na ordem contrária à de leitura. Obs: todos os acessos ao vetor devem ser 
     feitos usando somente ponteiros, sem usar os índices.
 */
