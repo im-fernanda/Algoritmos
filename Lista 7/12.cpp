@@ -7,7 +7,7 @@
 #include <iostream>
 using namespace std;
 
-void hm (int mnts, int* ponteiroH, int* ponteiroM);
+void hm (int mnts, int *ponteiroH, int *ponteiroM);
 
 int main() {
     int mnts, h, m;
@@ -23,7 +23,7 @@ int main() {
     return 0;
 }
 
-void hm (int mnts, int* ponteiroH, int* ponteiroM){
+void hm (int mnts, int *ponteiroH, int *ponteiroM){
     *ponteiroH = mnts/60;
     *ponteiroM = mnts%60;
 }
