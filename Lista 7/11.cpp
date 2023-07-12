@@ -40,7 +40,6 @@ int main(){
     //Op 2
     const int tam = 2;
     tData datas[tam];
-    bool datasValidas[tam];
     int i=0, cont=0;
     bool verifica[tam];
     //Op 3
