@@ -23,7 +23,7 @@ struct tData{
 
 void ordenaNumeros(int &n1, int &n2, int &n3, char ordem);
 
-bool verificaData(const tData &datas, int cont);
+bool verificaData(const tData &datas, int cont, bool *verificador);
 
 float valorPorFilho(float salario, int qntFilhos);
 
@@ -42,6 +42,7 @@ int main(){
     tData datas[tam];
     bool datasValidas[tam];
     int i=0, cont=0;
+    bool verifica[tam];
     //Op 3
     float salario;
     int qntFilhos;
@@ -104,6 +105,7 @@ do {
 
             cout << "INICIANDO CADASTRO... \n";
             do {
+                cout << "--- DATA " << i+1 << "---" << endl;
                 cout << "Informe o dia: ";
                 cin >> datas[i].dia;
                 cout << "Informe o mes: ";
@@ -117,12 +119,14 @@ do {
 
             cout << "Resultado:" << endl;
             for (i=0; i<tam; i++) {
-                if (verificaData(datas[i],cont)){
+                verificaData(datas[i], cont, verifica);
+                if (verifica[i]){
                     cout << "True ";
                 } else {
                     cout << "False ";
                 }
             }
+
         break;
 
         case 3:
@@ -189,7 +193,6 @@ do {
         cout << "Percentual de acertos: " << percentualAcertos << endl;;
         cout << "Nota: " << nota;
 
-
         break;
 
         case 6: cout << "Fim de programa!";
@@ -241,34 +244,40 @@ void ordenaNumeros(int &n1, int &n2, int &n3, char ordem){
         n3 = maior;
 
 }
-bool verificaData(const tData &datas, int cont) {
-    int i;
-    for (i = 0; i < cont; i++) {
+bool verificaData(const tData &datas, int cont, bool *verificador){
+    int i, tam=2;
+    for (i=0;i<tam;i++){
+        verificador[i] = true;
+    }
+
+    for (i = 0; i < cont; i++) {   
         // Verifica se o dia está entre 1 e 31
         if (datas.dia < 1 || datas.dia > 31) {
-            return false;
+            verificador[i] = false;
+            // return false;
         }
         // Verifica se o mês está entre 1 e 12
         if (datas.mes < 1 || datas.mes > 12) {
-            return false;
+            verificador[i] = false;
+            // return false;
         }
         // Verifica se o mês tem 30 ou 31 dias
         if (datas.mes == 4 || datas.mes == 6 || datas.mes == 8 || datas.mes == 11) {
             if (datas.dia > 30) {
-                return false;
+                verificador[i] = false;
+                // return false;
             }
         }
-
         // Verifica se o mês é fevereiro (possui 28 dias)
         if (datas.mes == 2) {
             // Desconsiderando anos bissextos
             if (datas.dia > 28) {
-                return false;
+                verificador[i] = false;
+                // return false;
             }
         }
     }
 
-    return true;
 }
 float valorPorFilho(float salario, int qntFilhos){
     float metadeSalario, divisao;
