@@ -55,7 +55,6 @@ int main(){
     int percentualAcertos;
     float nota;
 
-
 do {
     cout << "\n\t-------------------------------------------------------";
     cout << "\n\tMENU PRINCIPAL";
@@ -323,7 +322,3 @@ void pontos(int gabaritos[][10], int *percentualAcertos, float *nota){
     *percentualAcertos=cont*10; //quantidade de acertos vezes a quantidade de questões (10) dividido por 100
  
 }
-
-
-
-
