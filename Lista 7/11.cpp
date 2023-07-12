@@ -244,7 +244,7 @@ void ordenaNumeros(int &n1, int &n2, int &n3, char ordem){
 
 }
 bool verificaData(const tData &datas, int cont, bool *verificador){
-    int i, tam=2;
+    int i, tam=5;
     for (i=0;i<tam;i++){
         verificador[i] = true;
     }
@@ -253,18 +253,15 @@ bool verificaData(const tData &datas, int cont, bool *verificador){
         // Verifica se o dia está entre 1 e 31
         if (datas.dia < 1 || datas.dia > 31) {
             verificador[i] = false;
-            // return false;
         }
         // Verifica se o mês está entre 1 e 12
         if (datas.mes < 1 || datas.mes > 12) {
             verificador[i] = false;
-            // return false;
         }
         // Verifica se o mês tem 30 ou 31 dias
         if (datas.mes == 4 || datas.mes == 6 || datas.mes == 8 || datas.mes == 11) {
             if (datas.dia > 30) {
                 verificador[i] = false;
-                // return false;
             }
         }
         // Verifica se o mês é fevereiro (possui 28 dias)
@@ -272,7 +269,6 @@ bool verificaData(const tData &datas, int cont, bool *verificador){
             // Desconsiderando anos bissextos
             if (datas.dia > 28) {
                 verificador[i] = false;
-                // return false;
             }
         }
     }
