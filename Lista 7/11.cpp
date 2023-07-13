@@ -244,11 +244,9 @@ void ordenaNumeros(int &n1, int &n2, int &n3, char ordem){
 }
 bool verificaData(const tData &datas, int cont, bool *verificador){
     int i, tam=5;
-    for (i=0;i<tam;i++){
-        verificador[i] = true;
-    }
 
-    for (i = 0; i < cont; i++) {   
+    for (i = 0; i < cont; i++) { 
+        verificador[i] = true;
         // Verifica se o dia está entre 1 e 31
         if (datas.dia < 1 || datas.dia > 31) {
             verificador[i] = false;
