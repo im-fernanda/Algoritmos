@@ -74,7 +74,3 @@ int* uniao (int *x1, int *x2, int n1, int n2, int *qtd){
 // A função uniao retorna um ponteiro para o vetor x3, que é alocado dinamicamente dentro da função. Quando atribuímos o valor retornado por uniao a x3, estamos efetivamente copiando o endereço de memória retornado pela função para o ponteiro x3.
 
 // Portanto, após a execução dessa linha, o ponteiro x3 estará apontando para o início do vetor dinamicamente alocado x3, permitindo o acesso e manipulação dos elementos do vetor por meio do ponteiro x3.
-
-
-
-
